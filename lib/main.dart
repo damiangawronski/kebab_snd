@@ -1,6 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:kebab_snd/app/login/login_page.dart';
+import 'package:kebab_snd/home/home_page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -18,7 +20,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: RootPage(),
+      home: const RootPage(),
     );
   }
 }
@@ -31,21 +33,14 @@ class RootPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<User?>(
-        stream: FirebaseAuth.instance.authStateChanges(),
-        builder: (context, snapshot) {
-          final user = snapshot.data;
-          if (user == null) {
-            return const Scaffold(
-              body: Center(
-                child: Text('jesteś niezalogowany'),
-              ),
-            );
-          }
-          return Scaffold(
-            body: Center(
-              child: Text('jesteś zalogowany jako${user.email}'),
-            ),
-          );
-        });
+      stream: FirebaseAuth.instance.authStateChanges(),
+      builder: (context, snapshot) {
+        final user = snapshot.data;
+        if (user == null) {
+          return LoginPage();
+        }
+        return HomePage(user: user);
+      },
+    );
   }
 }
