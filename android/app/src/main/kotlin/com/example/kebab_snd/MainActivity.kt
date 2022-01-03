@@ -1,4 +1,4 @@
-package com.example.kebab_snd
+package com.damiangawronski.kebab_snd
 
 import io.flutter.embedding.android.FlutterActivity
 

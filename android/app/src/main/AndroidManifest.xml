@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.kebab_snd">
+    package="com.damiangawronski.kebab_snd">
    <application
         android:label="kebab_snd"
         android:icon="@mipmap/ic_launcher">

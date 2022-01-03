@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "760011659871",
+    "project_id": "kebab-snd",
+    "storage_bucket": "kebab-snd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:760011659871:android:c6db64f2c8e579328e99ea",
+        "android_client_info": {
+          "package_name": "com.damiangawronski.kebab_snd"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "760011659871-e1pfcugiabjn4ejsvvbje61hphl6v7ji.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCntkx7JfAwdoGUl5RmM1VwCSQOPIMeYkM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "760011659871-e1pfcugiabjn4ejsvvbje61hphl6v7ji.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
