@@ -1,5 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:kebab_snd/home/add_opinion/add_opinion_page_content.dart';
+import 'package:kebab_snd/home/kebab/kebab_page_content.dart';
+import 'package:kebab_snd/home/my_account/my_account_page_content.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({
@@ -19,32 +22,23 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: const Text('najlepszy kebab w Sandomierzu'),
+      ),
       body: Builder(builder: (context) {
         if (currentIndex == 0) {
-          return Center(
-            child: Text('jeden'),
-          );
+          return const KebabPageContent();
         }
         if (currentIndex == 1) {
-          return Center(
-            child: Text('dwa'),
-          );
+          return AddOpinionPageContent(onSave: () {
+            setState(() {
+              currentIndex = 0;
+            });
+          });
         }
 
         return Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text('jesteś zalogowany jako ${widget.user.email}'),
-              SizedBox(height: 20),
-              ElevatedButton(
-                onPressed: () {
-                  FirebaseAuth.instance.signOut();
-                },
-                child: Text('wyloguj się'),
-              ),
-            ],
-          ),
+          child: MyAccountPageContent(email: widget.user.email),
         );
       }),
       bottomNavigationBar: BottomNavigationBar(
