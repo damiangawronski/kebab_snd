@@ -21,13 +21,13 @@ class _LoginPageState extends State<LoginPage> {
     return Scaffold(
       body: Center(
         child: Padding(
-          padding: const EdgeInsets.all(20.0),
+          padding: const EdgeInsets.all(30.0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(isCreatingAccount == true
                   ? 'zarejestruj się'
-                  : 'zaloguj się'),
+                  : 'zaloguj  się'),
               TextField(
                 decoration: const InputDecoration(hintText: 'e-mail'),
                 controller: widget.emailController,
