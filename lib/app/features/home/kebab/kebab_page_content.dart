@@ -1,5 +1,6 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:kebab_snd/app/features/home/kebab/cubit/kebab_cubit.dart';
 
 class KebabPageContent extends StatelessWidget {
   const KebabPageContent({
@@ -8,21 +9,23 @@ class KebabPageContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return StreamBuilder<QuerySnapshot<Map<String, dynamic>>>(
-        stream: FirebaseFirestore.instance
-            .collection('kebab')
-            .orderBy('rating', descending: true)
-            .snapshots(),
-        builder: (context, snapshot) {
-          if (snapshot.hasError) {
-            return const Text('Something went wrong');
+    return BlocProvider(
+      create: (context) => KebabCubit()..start(),
+      child: BlocBuilder<KebabCubit, KebabState>(
+        builder: (context, state) {
+          if (state.errorMessage.isNotEmpty) {
+            return Center(
+              child: Text(
+                'Something went wrong: ${state.errorMessage}',
+              ),
+            );
           }
 
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return const Text("Loading");
+          if (state.isLoading == true) {
+            return const Center(child: CircularProgressIndicator());
           }
 
-          final documents = snapshot.data!.docs;
+          final documents = state.documents;
 
           return ListView(
             children: [
@@ -46,6 +49,8 @@ class KebabPageContent extends StatelessWidget {
               ],
             ],
           );
-        });
+        },
+      ),
+    );
   }
 }
