@@ -2,7 +2,7 @@
     package="com.damiangawronski.kebab_snd">
    <application
         android:label="kebab_snd"
-        android:icon="@mipmap/ic_launcher">
+        android:icon="@mipmap/launcher_icon">
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"
